@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: "nuxt3-socket",
+      name: "hom.wang",
       script: ".output/server/index.mjs",
       watch: true,
       env: {
