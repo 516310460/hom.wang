@@ -1,8 +1,16 @@
 <script setup lang="ts">
+useHead({
+  title: 'Hom Wang',
+  // link: [
+  //   {
+  //     rel: 'icon', type: 'image/png', href: '/nuxt.png',
+  //   },
+  // ],
+})
 </script>
   
 <template>
-  <div>
-    <nuxt-link to="https://socket.hom.wang">Nuxt3 socket</nuxt-link>
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>

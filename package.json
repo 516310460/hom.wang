@@ -12,6 +12,12 @@
     "nuxt": "3.0.0-rc.9"
   },
   "dependencies": {
+    "@nuxtjs/color-mode": "^3.1.5",
+    "@iconify-json/carbon": "^1.1.7",
+    "@iconify-json/twemoji": "^1.1.5",
+    "@pinia/nuxt": "^0.4.2",
+    "@unocss/nuxt": "^0.45.18",
+    "@vueuse/nuxt": "^9.2.0",
     "socket.io": "^4.5.2",
     "socket.io-client": "^4.5.2"
   }
