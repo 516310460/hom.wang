@@ -6,18 +6,32 @@
         <span>Nuxt3</span>
       </NuxtLink>
       <div class="flex items-center space-x-4">
-        <nuxt-link dark="text-white" light="text-black" hover="opacity-100" class="opacity-50" to="https://socket.hom.wang">Nuxt3 socket</nuxt-link>
+        <nuxt-link dark="text-white" light="text-black" hover="opacity-100" class="opacity-50"
+          to="https://socket.hom.wang">{{ $t('header.在线聊天') }}</nuxt-link>
       </div>
       <div class="flex items-center space-x-4">
+        <span v-for="locale in availableLocales" :key="locale.code">
+          <NuxtLink :to="switchLocalePath(locale.code) || ''">{{ locale.name }}</NuxtLink>
+        </span>
         <DarkToggle />
         <a class="text-fs24" i-carbon-logo-github href="https://github.com/516310460/hom.wang" target="_blank" />
       </div>
     </w-header>
     <div class="max-w-1000px mx-auto px-6 py-10">
-      <p dark="text-white" light="text-black" class="text-fs32">Hom Wang</p>
-      <div dark="text-[#ccc]" light="text-black opacity-50" class="mt-6 text-fs20">
-        Hey, I am Hom Wang
-      </div>
+      <p dark="text-white" light="text-black" class="text-fs32">{{ $t('home.名字') }}</p>
+      <p dark="text-[#ccc]" light="text-black opacity-50" class="mt-6 text-fs20">
+        {{ $t('home.欢迎词') }}
+      </p>
+      <p dark="text-[#ccc]" light="text-black opacity-50" class="mt-6 text-fs20">{{ $t('home.介绍') }}</p>
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import { LocaleObject, useI18n } from '#i18n'
+const { locale, locales, t } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+const availableLocales = computed(() => {
+  return (locales.value as LocaleObject[]).filter(i => i.code !== locale.value)
+})
+</script>

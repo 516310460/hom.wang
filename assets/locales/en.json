@@ -1,0 +1,13 @@
+{
+  "layouts": {
+    "title": "Hom Wang"
+  },
+  "header": {
+    "在线聊天": "Chat online"
+  },
+  "home": {
+    "名字": "Hom Wang",
+    "欢迎词": "Hey, I am Hom Wang",
+    "介绍": "I have written a lot of examples, click on the header to view"
+  }
+}
