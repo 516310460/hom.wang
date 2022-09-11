@@ -9,6 +9,19 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     "@nuxtjs/i18n",
   ],
+  pwa: {
+    meta: {
+      // Generate splash screens for iOS
+      mobileAppIOS: true,
+      name: 'HomWang',
+      author: '516310460@gmail.com',
+      description: 'HomWang',
+      lang: 'en',
+    },
+    workbox: {
+      enabled: true
+    }
+  },
   experimental: {
     reactivityTransform: true,
     viteNode: false,
