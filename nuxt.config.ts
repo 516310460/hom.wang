@@ -6,7 +6,7 @@ export default defineNuxtConfig({
       title: 'Hom Wang',
       meta: [
         { name: 'referrer', content: 'no-referrer' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=2, user-scalable=0' }
+        { name: 'viewport', content: 'width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=true' }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
