@@ -19,7 +19,8 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
-    "@nuxtjs/i18n"
+    "@nuxtjs/i18n",
+    '@kevinmarrec/nuxt-pwa'
   ],
   pwa: {
     meta: {
