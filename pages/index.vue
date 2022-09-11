@@ -6,15 +6,18 @@
         <span>Nuxt3</span>
       </NuxtLink>
       <div class="flex items-center space-x-4">
-        <nuxt-link dark="text-white" light="text-black" hover="opacity-100" class="opacity-50"
-          to="https://socket.hom.wang">{{ $t('header.在线聊天') }}</nuxt-link>
+        <nuxt-link dark="text-white" light="text-black" hover="opacity-100" class="opacity-50 transition delay-50 flex items-center space-x-1"
+          to="https://socket.hom.wang">
+          <i i-carbon-chat></i>
+          <span>{{ $t('header.在线聊天') }}</span>  
+        </nuxt-link>
       </div>
       <div class="flex items-center space-x-4">
-        <span v-for="locale in availableLocales" :key="locale.code">
+        <span dark="text-white" light="text-black" hover="opacity-100" class="opacity-50 transition delay-50" v-for="locale in availableLocales" :key="locale.code">
           <NuxtLink :to="switchLocalePath(locale.code) || ''">{{ locale.name }}</NuxtLink>
         </span>
         <DarkToggle />
-        <a class="text-fs24" i-carbon-logo-github href="https://github.com/516310460/hom.wang" target="_blank" />
+        <a dark="text-white" light="text-black" hover="opacity-100" class="text-fs24 opacity-50 transition delay-50" i-carbon-logo-github href="https://github.com/516310460/hom.wang" target="_blank" />
       </div>
     </w-header>
     <div class="max-w-1000px mx-auto px-6 py-10">
