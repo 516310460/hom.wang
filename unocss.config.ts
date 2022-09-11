@@ -40,6 +40,9 @@ export default defineConfig({
     // 初始化默认主题
     darkSelector: ".dark-mode",
     colors: {
+      darkPrimary: {
+        '500': '#334040',
+      },
       primary: {
         '50': 'var(--colors-primary-50)',
         '100': 'var(--colors-primary-100)',
