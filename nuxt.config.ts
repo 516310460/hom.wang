@@ -1,6 +1,18 @@
 import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: 'Hom Wang',
+      meta: [
+        { name: 'referrer', content: 'no-referrer' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
+      ],
+    },
+  },
   css: ['~/assets/css/main.css'],
   modules: [
     '@vueuse/nuxt',
@@ -14,7 +26,7 @@ export default defineNuxtConfig({
       // Generate splash screens for iOS
       mobileAppIOS: true,
       name: 'HomWang',
-      author: '516310460@gmail.com',
+      author: '516310460@qq.com',
       description: 'HomWang',
       lang: 'en',
     },
