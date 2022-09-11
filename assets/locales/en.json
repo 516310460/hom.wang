@@ -7,7 +7,14 @@
   },
   "home": {
     "名字": "Hom Wang",
-    "欢迎词": "Hey, I am Hom Wang",
-    "介绍": "I have written a lot of examples, click on the header to view"
+    "欢迎词": "Hey, I am Hom Wang.",
+    "介绍": "I like Nuxt3, its development is infinitely scalable and supports full stack development. I have successfully used Mysql, Redis database, and Socket connection on the server side, it's great.",
+    "创建了~": "Creator of ",
+    "~等": " and others.",
+    "热情所在": "9 years of coding experience and I'm still exploring and learning because I love coding. You can find my full project list here",
+    "兴趣爱好": "Outside of programming, I enjoy photography, fitness and travel. If you happen to be in the same city where I live (currently in Chengdu), maybe we can go out for photos, workouts or coding together.",
+    "语言": "Languages",
+    "中文": "🇨🇳 Chinese (Native)",
+    "英语": "🇬🇧 English (Conversational)"
   }
 }
