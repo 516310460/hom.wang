@@ -13,6 +13,8 @@ export default defineNuxtConfig({
       ],
     },
   },
+  // Turn off rendering of Nuxt scripts and JS resource hints.
+  noscripts: true,
   css: ['~/assets/css/main.css'],
   modules: [
     '@vueuse/nuxt',
