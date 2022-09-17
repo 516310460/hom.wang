@@ -26,6 +26,18 @@ html.dark {
   color: white;
 }
 
+.h-content{
+  min-height: calc(100% - 9.675rem);
+}
+
+.h-chat-content{
+  min-height: calc(100% - 6rem);
+}
+
+.h-chatMsg-content{
+  height: calc(100vh - 14rem);
+}
+
 .btn {
   --w-at-apply: px-4;
 }

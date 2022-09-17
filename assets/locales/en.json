@@ -3,8 +3,14 @@
     "title": "Hom Wang"
   },
   "header": {
-    "在线聊天": "Chat online",
-    "阅读王弘更多的信息": "阅读王弘更多的信息"
+    "在线聊天": "Chat",
+    "阅读王弘更多的信息": "Read more about Hom Wang",
+    "状态": "Status",
+    "已连接": "Connected",
+    "连接失败": "Connection failed",
+    "消息列表": "Message list",
+    "暂无数据": "Not Data",
+    "发送": "Send"
   },
   "home": {
     "名字": "Hom Wang",
