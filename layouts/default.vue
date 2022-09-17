@@ -2,6 +2,8 @@
 import { LocaleObject, useI18n } from "#i18n";
 import { io } from 'socket.io-client'
 const socket = io();
+const copyState = ref(0)
+const copyMsg = ref('')
 const connected = ref(false)
 const msg = ref('')
 const getIp = ref('')
@@ -54,7 +56,10 @@ const sendMsg = () => {
 </script>
 
 <template>
-  <div class="h-full">
+  <div class="h-full" v-waterMarker="{
+      text: 'Hom Wang',
+      textColor: 'rgba(16, 185, 129, 0.2)'
+  }">
     <Html :lang="head?.htmlAttrs?.lang">
 
     <Head>
@@ -70,11 +75,11 @@ const sendMsg = () => {
     <Body>
       <w-header class="flex items-center justify-between text-fs18">
         <NuxtLink to="/" dark="text-white" light="text-darkPrimary-500"
-          class="cursor-pointer flex items-center space-x-1 text-fs24">
+          class="cursor-pointer flex items-center space-x-1 text-fs24 flex-none">
           <img class="w-8 h-8" src="/nuxt.png" alt="" />
           <span sm="block" class="hidden">Nuxt3</span>
         </NuxtLink>
-        <div sm="flex items-center space-x-4" class="hidden">
+        <div sm="flex items-center space-x-8 flex-1 ml-24" class="hidden">
           <NuxtLink dark="text-white opacity-50" light="text-darkPrimary-500 opacity-85" hover="opacity-100"
             class="transition delay-50 flex items-center space-x-1" :aria-label="$t('header.在线聊天')"
             to="https://socket.hom.wang" target="_blank">
@@ -131,9 +136,6 @@ const sendMsg = () => {
             <code>{{ head }}</code>
           </div> -->
       <div class="p-4 text-fs12">
-        <div class="flex items-center space-x-4">
-          <!-- <span class="hover:text-primary-500 text-white cursor-pointer text-fs16" @click="FAQModal = true">FAQ</span> -->
-        </div>
         <div class="flex items-center justify-between space-x-2 mt-2">
           <div class="text-white opacity-60">
             Media inquires for HomWang Labs - Contact 516310460@qq.com
@@ -162,8 +164,7 @@ const sendMsg = () => {
           enter-to-class="transform transition ease-in-out duration-500 sm:duration-700 translate-y-0"
           leave-from-class="transform transition ease-in-out duration-500 sm:duration-700 translate-y-0"
           leave-to-class="transform transition ease-in-out duration-500 sm:duration-700 translate-y-full">
-          <div v-show="ChatModal" ref="ChatModalRef"
-            sm="w-480px h-640px rounded-lg"
+          <div v-show="ChatModal" ref="ChatModalRef" sm="w-480px h-640px rounded-lg"
             class="flex items-center justify-center w-full h-full fixed right-0 bottom-0 h-screen p-4 bg-[#012a35] text-white z-999 min-w-1/3">
             <div class="w-full h-full">
               <div class="flex items-center justify-between">
@@ -182,13 +183,17 @@ const sendMsg = () => {
                 </div>
                 <div>
                   <div class="bg-[#003543] p-4 rounded-t">{{$t('header.消息列表')}}</div>
-                  <div sm="h-420px" class="bg-[#012a35] p-4 rounded-b space-y-2 overflow-y-auto h-chatMsg-content">
+                  <div id="content" ref="content" v-scrollBottom sm="h-420px"
+                    class="bg-[#012a35] p-4 rounded-b space-y-2 overflow-y-auto h-chatMsg-content">
                     <div v-for="(item, index) in getMsg" :key="index">
                       <div class="flex items-center justify-between text-xs">
                         <div>{{item.user.user}}</div>
                         <div>{{item.time}}</div>
                       </div>
-                      <div class="text-[#bae6fd] text-base">{{item.user.text}}</div>
+                      <div class="text-[#bae6fd] text-fs14 flex items-center justify-between space-x-4 py-2">
+                        <span>{{item.user.text}}</span>
+                        <i hover="text-primary-500" class="cursor-pointer" v-copy="item.user.text" i-carbon-copy></i>
+                      </div>
                     </div>
                     <div v-if="!getMsg.length" class="text-center">{{$t('header.暂无数据')}}</div>
                   </div>
@@ -253,6 +258,21 @@ const sendMsg = () => {
             </div>
           </div>
         </Transition>
+
+        <!-- 提示框 -->
+        <div>
+          <Transition enter-from-class="opacity-0 scale-95 duration-150 ease-out"
+            enter-to-class="opacity-100 scale-100 duration-150 ease-out"
+            leave-from-class="opacity-100 scale-100 duration-150 ease-in"
+            leave-to-class="opacity-0 scale-95 duration-150 ease-in">
+            <div v-show="copyState" :class="copyState == 1 ? 'bg-primary-500' : 'bg-red'"
+              class="flex items-center justify-center absolute right-4 top-4 px-4 py-2 rounded-2xl text-white z-999 flex items-center space-x-2">
+              <i class="bg-white" v-if="copyState == 1" i-carbon-checkmark-filled></i>
+              <i class="bg-white" v-if="copyState == 2" i-carbon-checkmark-filled-error></i>
+              <span>{{copyMsg}}</span>
+            </div>
+          </Transition>
+        </div>
       </div>
     </Body>
 
