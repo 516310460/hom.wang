@@ -124,7 +124,7 @@ const sendMsg = () => {
         <div class="flex items-center space-x-4">
           <span dark="text-white opacity-50" light="text-darkPrimary-500 opacity-85" hover="opacity-100"
             class="transition delay-50" v-for="locale in availableLocales" :key="locale.code">
-            <NuxtLink :to="switchLocalePath(locale.code) || ''">
+            <NuxtLink :to="switchLocalePath(locale.code) || ''" :aria-label="locale.code">
               <i i-carbon-language class="inline-block text-fs24"></i>
             </NuxtLink>
           </span>
@@ -153,7 +153,7 @@ const sendMsg = () => {
           <div class="flex items-center space-x-4">
             <span dark="text-white opacity-50" light="text-darkPrimary-500 opacity-85" hover="opacity-100"
               class="transition delay-50" v-for="locale in availableLocales" :key="locale.code">
-              <NuxtLink :to="switchLocalePath(locale.code) || ''">
+              <NuxtLink :to="switchLocalePath(locale.code) || ''" :aria-label="locale.code">
                 <i i-carbon-language class="inline-block text-fs24"></i>
               </NuxtLink>
             </span>
