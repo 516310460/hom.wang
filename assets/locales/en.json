@@ -10,7 +10,8 @@
     "连接失败": "Connection failed",
     "消息列表": "Message list",
     "暂无数据": "Not Data",
-    "发送": "Send"
+    "发送": "Send",
+    "发送信息不能为空": "Send message cannot be empty"
   },
   "home": {
     "名字": "Hom Wang",

@@ -50,6 +50,16 @@ onMounted(() => {
 })
 
 const sendMsg = () => {
+  if(!msg.value){
+    copyState.value = 2
+    copyMsg.value = t('header.发送信息不能为空')
+    let copyTimer: ReturnType<typeof setTimeout> = setTimeout(() => {
+      copyState.value = 0
+      copyMsg.value = ''
+      clearTimeout(copyTimer)
+    }, 3000);
+    return
+  }
   socket.emit('msg', { user: `User Address ${getIp.value}:`, text: `${msg.value}` })
   msg.value = ''
 }
@@ -201,7 +211,7 @@ const sendMsg = () => {
               </div>
               <div class="flex items-center mt-4 space-x-2">
                 <w-input v-model="msg" @keyup.enter="sendMsg" class="flex-1"></w-input>
-                <w-button @click="sendMsg" size="default">{{$t('header.发送')}}</w-button>
+                <w-button v-debounce="sendMsg" size="default">{{$t('header.发送')}}</w-button>
               </div>
             </div>
           </div>
